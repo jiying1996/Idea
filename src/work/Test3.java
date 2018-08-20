@@ -1,9 +1,6 @@
 package work;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class Test3 {
     public static void main(String[] args) throws IOException {
@@ -19,25 +16,38 @@ public class Test3 {
         if(!file2.exists()){
             file2.mkdirs();
         }
-        FileOutputStream fileOutputStream = new FileOutputStream(desPath+File.separator+"zong.txt");
+        FileWriter fileWriter = new FileWriter(desPath+File.separator+"zong.txt",true);
+        FileReader fileReader = null;
         if (file.exists()) {
             if (file.isFile()) {
                 if(file.getName().trim().endsWith(".txt")){
-                    fileOutputStream.write(file.getName().getBytes());
+                    fileReader = new FileReader(file);
+                    char[] chars = new char[1024];
+                    int len;
+                    while ((len = fileReader.read(chars))!=-1){
+                        fileWriter.write(chars,0,len);
+                    }
+                    fileReader.close();
                 }
             } else {
                 File[] files = file.listFiles();
                 for (File file1 : files) {
                     if (file1.isDirectory()) {
-                        SearchAllFiles(pathName + File.separator + file1.getName(),desPath);
+                        SearchAllFiles(file1.getName(),desPath);
                     } else {
-                        if(file.getName().trim().endsWith(".txt")){
-                            System.out.println(file.getName().getBytes());
-//                            fileOutputStream.write(file.getName().getBytes());
+                        if(file1.getName().trim().endsWith(".txt")){
+                            fileReader = new FileReader(file1);
+                            char[] chars = new char[1024];
+                            int len;
+                            while ((len = fileReader.read(chars))!=-1){
+                                fileWriter.write(chars,0,len);
+                            }
+                            fileReader.close();
                         }
                     }
                 }
             }
         }
+        fileWriter.close();
     }
 }
