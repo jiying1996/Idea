@@ -7,8 +7,8 @@ import java.io.*;
  */
 public class Demo4 {
     public static void main(String[] args) throws IOException {
-        FileInputStream fileInputStream = new FileInputStream("page1.png");
-        FileOutputStream fileOutputStream = new FileOutputStream("pageCopy2.png");
+        FileInputStream fileInputStream = new FileInputStream("page1.gif");
+        FileOutputStream fileOutputStream = new FileOutputStream("pageCopy2.gif");
         BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
 
