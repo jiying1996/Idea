@@ -17,13 +17,19 @@ import java.io.*;
 3.使用对应的流将对象从磁盘中取出放回内存--反序列化----ObjectInputStream
 4.关闭流
 注意点：序列化流在工作时也要关联对应的输入流和输出流
- */
-//类通过实现接口以启用其序列化功能，未实现此接口的类将无法使其任何状态序列化或反序列化
-//可序列化类的所有子类型本身都是可序列化的，序列化接口没有方法或字段，仅用于标识可序列化的语义
-class Person implements Serializable {
-    private String name;
-    private int age;
 
+类通过实现接口以启用其序列化功能，未实现此接口的类将无法使其任何状态序列化或反序列化
+可序列化类的所有子类型本身都是可序列化的，序列化接口没有方法或字段，仅用于标识可序列化的语义
+使用系统的UID与自定义UID的区别
+使用系统的，序列化和反序列化，id不能手动设置，使用的时编译器默认生成的，一旦类发生了改动，id会重新赋值
+使用自己定义的，序列和反序列化，id不会自己改变，所以当反序列化的时候，即使对Person类进行了一些改动，也能反序列化成功
+*/
+class Person implements Serializable {
+
+    private String name;
+    private static final long serialVersionUID = -5771278644581545877L;
+    private int age;
+//    private int height;
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
@@ -78,5 +84,6 @@ public class Demo6 {
         //向下转型
         Person person = (Person)object;
         System.out.println(person);
+
     }
 }
