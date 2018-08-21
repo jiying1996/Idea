@@ -7,7 +7,7 @@ public class Demo12 {
 
     public static void main(String[] args) {
         //递归实例一：求1-10之间所有偶数的积与奇数的积的差
-//        System.out.println(run());
+        System.out.println(run());
 //        run2();
 //        System.out.println(sum1 - sum2);
     }
