@@ -29,7 +29,7 @@ public class Test4 {
                 else
                     continue;
             }
-            switch (s) {
+            switch (s.trim()) {
                 case "1":
                     makeFile();
                     break;
