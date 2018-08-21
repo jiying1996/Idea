@@ -18,15 +18,10 @@ public class Test2 {
             } else {
                 File[] files = file.listFiles();
                 for (File file1 : files) {
-                    if (file1.isDirectory()) {
-                        deleteAllFiles(pathName + File.separator + file1.getName());
-                    } else {
-                        file1.delete();
-                    }
+                    deleteAllFiles(pathName + File.separator + file1.getName());
+                    file1.delete();
                 }
             }
-        } else {
-            System.out.println("目录不存在");
         }
     }
 }
