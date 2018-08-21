@@ -20,7 +20,7 @@ public class Test2 {
         for (int i = 0; i < 5; i++) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("请输入第" + i + 1 + "个学生的信息 如:zhagnsan,30,40,60");
-            String[] str = scanner.nextLine().split(",");
+            String[] str = scanner.nextLine().trim().split(",");
             int score1 = Integer.parseInt(str[1]);
             int score2 = Integer.parseInt(str[2]);
             int score3 = Integer.parseInt(str[3]);

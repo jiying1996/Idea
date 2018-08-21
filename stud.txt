@@ -1,0 +1,5 @@
+Student{name='wusi', score1=70, score2=70, score3=70}	总分为：210
+Student{name='zhaoliu', score1=60, score2=60, score3=80}	总分为：200
+Student{name='wangwu', score1=50, score2=60, score3=70}	总分为：180
+Student{name='lisi', score1=40, score2=50, score3=60}	总分为：150
+Student{name='zhangsan', score1=30, score2=40, score3=50}	总分为：120

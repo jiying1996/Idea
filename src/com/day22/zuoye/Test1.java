@@ -21,13 +21,13 @@ public class Test1 {
         properties.load(fileReader);
 
         try {
-            int num = Integer.parseInt(properties.getProperty("num"));
+            Integer.parseInt(properties.getProperty("num"));
         } catch (NumberFormatException e) {//num键不存在的时候，创建key-value
             properties.setProperty("num", "0");
         }
 
         int num = Integer.parseInt(properties.getProperty("num"));
-        if (++num >= 5) {
+        if (++num > 5) {
             System.out.println("您使用的次数超过5次，请前去注册");
         }
 
