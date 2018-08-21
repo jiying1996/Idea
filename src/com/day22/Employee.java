@@ -6,6 +6,7 @@ public class Employee {
     private int score;
 
     public Employee() {
+
     }
 
     @Override
