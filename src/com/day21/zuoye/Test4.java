@@ -1,6 +1,4 @@
-package work;
-
-import com.sun.org.apache.bcel.internal.generic.GOTO;
+package com.day21.zuoye;
 
 import java.io.*;
 import java.util.Scanner;
