@@ -128,7 +128,7 @@ public class Test4 {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("找到第" + i + "个文件，正在读取中\n文件名为：" + f.getName() + "\n内容如下：");
+                    System.out.println("找到第" + i++ + "个文件，正在读取中\n文件名为：" + f.getName() + "\n内容如下：");
                     BufferedReader bufferedReader = new BufferedReader(new FileReader(f));
                     String data = null;
                     while ((data = bufferedReader.readLine()) != null) {
