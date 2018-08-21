@@ -18,7 +18,7 @@ public class Test2 {
             } else {
                 File[] files = file.listFiles();
                 for (File file1 : files) {
-                    deleteAllFiles(pathName + File.separator + file1.getName());
+                    deleteAllFiles(file1.toString());
                     file1.delete();
                 }
             }
