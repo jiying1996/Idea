@@ -1,5 +1,7 @@
 package work;
 
+import com.sun.org.apache.bcel.internal.generic.GOTO;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -17,14 +19,14 @@ import java.util.Scanner;
  */
 public class Test4 {
     public static void main(String[] args) throws IOException {
-        while (true){
+        while (true) {
             System.out.println("1-创建文件\t2-删除文件\t3-复制文件\t4-根据输入文件名称，读取文件内容执行对应的指令。\t输入exit则为退出");
             System.out.println("请输入1-4选择要操作的功能：");
             Scanner scanner = new Scanner(System.in);
             String s = scanner.next();
-            if(s.equals("exit")){
+            if (s.equals("exit")) {
                 System.out.println("确定要退出？输入Y or N");
-                if(scanner.next().equalsIgnoreCase("y"))
+                if (scanner.next().equalsIgnoreCase("y"))
                     break;
                 else
                     continue;
@@ -51,6 +53,7 @@ public class Test4 {
 
     /**
      * 功能一:创建文件
+     *
      * @throws IOException
      */
     public static void makeFile() throws IOException {
@@ -71,24 +74,25 @@ public class Test4 {
     /**
      * 删除指定文件
      */
-    public static void deleteFiles(){
+    public static void deleteFiles() {
         System.out.println("请输入要删除文件的路径：");
         Scanner scanner = new Scanner(System.in);
         String str = scanner.next();
         File file = new File(str);
-        if(file.isFile()){
-            if(file.exists()){
+        if (file.isFile()) {
+            if (file.exists()) {
                 file.delete();
                 System.out.println("删除成功");
-            }else
+            } else
                 System.out.println("文件不存在");
-        }else {
+        } else {
             System.out.println("输入的不是文件路径");
         }
     }
 
     /**
      * 复制文件
+     *
      * @throws IOException
      */
     public static void copyFile() throws IOException {
@@ -96,45 +100,53 @@ public class Test4 {
         Scanner scanner = new Scanner(System.in);
         String str = scanner.next();
         File file = new File(str);
-        if(file.exists()){
+        if (file.exists()) {
             FileReader fileReader = new FileReader(file);
-            FileWriter fileWriter = new FileWriter(file+".copy.txt");
+            FileWriter fileWriter = new FileWriter(file + ".copy.txt");
             char[] chars = new char[1024];
             int len;
-            while ((len = fileReader.read(chars))!=-1){
-                fileWriter.write(chars,0,len);
+            while ((len = fileReader.read(chars)) != -1) {
+                fileWriter.write(chars, 0, len);
             }
             fileReader.close();
             fileWriter.close();
             System.out.println("文件复制成功");
-        }else
+        } else
             System.out.println("文件不存在");
     }
 
     public static void execute() throws IOException {
-        System.out.println("请输入要查找以及执行的路径");
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
-        File file = new File(str);
-        File[] files = file.listFiles();
-        int i = 1;
-        for (File f : files){
-            if(f==null){
-                System.out.println("未找到可读文件");
-            }else {
-                if (f.isFile()) {
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println("找到第" + i++ + "个文件，正在读取中\n文件名为：" + f.getName() + "\n内容如下：");
-                    BufferedReader bufferedReader = new BufferedReader(new FileReader(f));
-                    String data = null;
-                    while ((data = bufferedReader.readLine()) != null) {
-                        System.out.println(data);
+        while (true) {
+            System.out.println("请输入要查找以及执行的路径:");
+            Scanner scanner = new Scanner(System.in);
+            String str = scanner.nextLine();
+            File file = new File(str);
+            if (file.isDirectory()) {
+                File[] files = file.listFiles();
+                int i = 1;
+                for (File f : files) {
+                    if (f == null) {
+                        System.out.println("未找到可读文件");
+                    } else {
+                        if (f.isFile()) {
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            System.out.println("找到第" + i++ + "个文件，正在读取中\n文件名为：" + f.getName() + "\n内容如下：");
+                            BufferedReader bufferedReader = new BufferedReader(new FileReader(f));
+                            String data = null;
+                            while ((data = bufferedReader.readLine()) != null) {
+                                System.out.println(data);
+                            }
+                        }
                     }
                 }
+                break;
+            } else {
+                System.out.print("您输入的路径不正确,");
+                continue;
             }
         }
     }
