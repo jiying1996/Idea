@@ -1,7 +1,5 @@
 package com.wqk;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -67,7 +65,7 @@ class MyBufferedReader extends Reader {//1.要属于流的体系
     }
 
     @Override
-    public int read(@NotNull char[] cbuf, int off, int len) throws IOException {
+    public int read(char[] cbuf, int off, int len) throws IOException {
         return 0;
     }
 

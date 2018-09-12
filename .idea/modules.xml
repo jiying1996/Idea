@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IODemo.iml" filepath="$PROJECT_DIR$/IODemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hadoop01/hadoop01.iml" filepath="$PROJECT_DIR$/../hadoop01/hadoop01.iml" />
     </modules>
   </component>
 </project>

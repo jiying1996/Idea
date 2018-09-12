@@ -1,6 +1,6 @@
 public class Test {
     /**
-     * 铺砖
+     * 铺砖 斐波那契数列
      * @param args
      */
     public static void main(String[] args) {

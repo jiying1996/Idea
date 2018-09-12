@@ -1,8 +1,6 @@
 package work;
 
 import java.io.*;
-import java.util.Scanner;
-
 /**
  * 编写应用程序，使用文件输入输出流对某个mp3文件的数据进行修改，并保存为新的mp3
  */
